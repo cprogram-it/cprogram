@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cprogram - حلول تقنية متكاملة</title>
+    <link rel="icon" href="image/icon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            color: white;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* صفحة الإنشاء */
+        #creation-page {
+            padding: 8rem 1rem 3rem;
+            min-height: 100vh;
+        }
+
+        .creation-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 10px rgba(76,175,80,0.1);
+        }
+
+        .submit-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #45a049;
+        }
+
+        /* قسم الاتصال */
+        .contact {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 1.5rem 0;
+        }
+
+        .contact-item i {
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .creation-form {
+                padding: 1.5rem;
+            }
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h1 { font-size: 2.2rem; }
+        h2 { font-size: 1.8rem; }
+        p { font-size: 1.1rem; color: #666; }
+
+
+
+
+
+
+       /* header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }*/
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+
+            <a href="#" class="logo">Cprogram</a>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+
+
+
+        </nav>
+    </header>
+<section id="creation-page">
+        <div class="creation-form">
+            <h2>طلب خدمة جديدة</h2>
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" name="phone" required>
+                </div>
+    
+                <div class="form-group">
+                    <label>نوع الخدمة</label>
+                    <select name="service" required>
+                        <option value="">اختر نوع الخدمة</option>
+                        <option value="site">موقع إلكتروني</option>
+                        <option value="desktop">برنامج سطح مكتب</option>
+                        <option value="solution">حل برمجي</option>
+                        <option value="app">تطبيق</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label>الوصف</label>
+                    <textarea rows="6" name="description" required></textarea>
+                </div>
+    
+                <button type="submit" class="submit-btn">إرسال الطلب</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="contact-content">
+            <h2>تواصل معنا</h2>
+            <!-- <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p>+966 555 123 456</p>
+            </div> -->
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>cprogram.it@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>الرياض، المملكة العربية السعودية</p>
+            </div>
+        </div>
+    </section>
+
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    document.getElementById('serviceForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        
+        var url = "https://script.google.com/macros/s/AKfycbzDr_cQAqRAYIJ1cV7MrRF5X6R5_vNuwSGPswTjQl8CVvnU16G9_6SUBZznhIZheIh-MQ/exec"; // ضع رابط السكريبت هنا
+
+        fetch(url, {         
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        alert('تم استلام طلبك بنجاح، سنتواصل في أقرب وقت');
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

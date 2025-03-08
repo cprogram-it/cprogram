@@ -1,0 +1,2526 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cprogram - حلول تقنية متكاملة</title>
+    <link rel="icon" href="image/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* الهيدر */
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        /* السلايدر الرئيسي */
+        .swiper-container {
+            width: 100%;
+            height: 100vh;
+            margin-top: 60px;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            position: relative;
+            text-align: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* الخدمات */
+        .services {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+        }
+
+        /* معرض الأعمال */
+        .portfolio {
+            padding: 6rem 2rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+.portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* التقييمات */
+        .reviews {
+            padding: 6rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .reviews-swiper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            margin: 1rem;
+        }
+
+        .rating {
+            color: #ffd700;
+            margin: 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .client-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-left: 15px;
+            object-fit: cover;
+        }
+
+        /* نموذج الاتصال */
+        .contact {
+            padding: 6rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            padding-right: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #4CAF50;
+            border-radius: 30px;
+            background: transparent;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #45a049;
+            box-shadow: 0 0 15px rgba(76,175,80,0.3);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .contact-form button:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* زر إنشاء الموقع */
+        .create-site-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .create-site-btn:hover {
+            transform: translateY(-3px);
+            background: #45a049;
+        }
+
+        /* التكيف مع الجوال */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+
+                /*  display: none; /* إخفاء القائمة على الشاشات الصغيرة */
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #1a1a1a;
+                width: 100%;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu-toggle {
+                display: block;
+                color: white;
+                font-size: 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                text-align: center;
+            }
+        .create-site-btn {
+                bottom: 20px;
+                left: 20px;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        
+
+        nav ul.show {
+                display: flex; /* عرض القائمة عند الضغط على الزر */
+            }
+        
+        }
+
+
+
+
+
+
+
+
+
+/*
+    @media (max-width: 768px) {
+            nav ul {
+                display: none; // إخفاء القائمة على الشاشات الصغيرة 
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #1a1a1a;
+                width: 100%;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+        
+            nav ul.show {
+                display: flex; // عرض القائمة عند الضغط على الزر 
+            }
+        
+            .menu-toggle {
+                display: block; // إظهار الزر فقط عند الحاجة 
+            }
+        }*/
+        
+
+
+
+
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none !important; /* إخفاء الزر على الشاشات الكبيرة */
+            }
+        
+            nav ul {
+                display: flex !important; /* التأكد من عرض القائمة */
+            }
+        }
+
+
+
+
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.4rem; text-align: center; }
+        h3 { font-size: 1.8rem; }
+        p { font-size: 1.1rem; color: #666; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Cprogram</a>
+            <ul>
+                <!-- <li><a href="#home">الرئيسية</a></li> -->
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#portfolio">معرض الأعمال</a></li>
+                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- السلايدر الرئيسي -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="image/1.jpg" alt="تطوير مواقع">
+                <div class="slide-content">
+                    <h1>حلول برمجية مبتكرة</h1>
+                    <p>نحو مستقبل رقمي أكثر تطوراً</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="image/2.jpg" alt="برمجة">
+                <div class="slide-content">
+                    <h1>تطوير برامج مخصصة</h1>
+                    <p>حلول ذكية لمشاكل الأعمال</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- الخدمات -->
+    <section class="services" id="services">
+        <h2>خدماتنا</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>تطوير المواقع</h3>
+                <p>تصميم وتطوير مواقع احترافية بتقنيات حديثة</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-desktop"></i>
+                <h3>برامج سطح المكتب</h3>
+                <p>حلول برمجية لأنظمة التشغيل المختلفة</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>التطبيقات الذكية</h3>
+                <p>تطوير تطبيقات iOS و Android</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- معرض الأعمال -->
+    <section class="portfolio" id="portfolio">
+        <h2>معرض أعمالنا</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="image/6.jpg" alt="متجر إلكتروني">
+            </div>
+            <div class="portfolio-item">
+                <img src="image/7.jpg" alt="لوحة تحكم">
+            </div>
+            <div class="portfolio-item">
+                <img src="image/8.jpg" alt="تطبيق جوال">
+            </div>
+        </div>
+    </section>
+
+    <!-- التقييمات -->
+    <section class="reviews" id="reviews">
+        <h2>آراء عملائنا</h2>
+        <div class="swiper reviews-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="review-card">
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p>"أفضل شركة تعاملت معها، التنفيذ باحترافية عالية والالتزام بالمواعيد"</p>
+                        <div class="client-info">
+                            <img src="image/5.jpg" class="client-photo" alt="عميل">
+<div>
+                                <h4>أحمد محمد</h4>
+                                <p>مدير شركة التقنية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="review-card">
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p>"خدمة عملاء ممتازة ودعم فني على مدار الساعة"</p>
+                        <div class="client-info">
+                            <img src="image/4.jpg" class="client-photo" alt="عميلة">
+                            <div>
+                                <h4>فاطمة علي</h4>
+                                <p>صاحبة متجر إلكتروني</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- اتصل بنا -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>تواصل معنا</h2>
+
+                <!-- <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+966 555 123 456</p>
+                </div> -->
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>cprogram.it@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>الرياض، المملكة العربية السعودية</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="اسمك الكريم" required>
+                <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+                <input type="tel" name="tel" placeholder="رقم الجوال">
+                <textarea name="mesage" placeholder="رسالتك..." required></textarea>
+                <button type="submit">إرسال الرسالة</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- زر إنشاء الموقع -->
+    <a href="form.html" class="create-site-btn">
+        <i class="fas fa-rocket"></i>
+        أنشئ موقعك الآن
+    </a>
+
+    <script>
+
+        /*const menuToggle = document.querySelector('.menu-toggle');
+        const navUl = document.querySelector('nav ul');*/
+        
+        function checkMenuVisibility() {
+            if (window.innerWidth > 768) {
+                navUl.classList.remove('show');
+                menuToggle.style.display = 'none'; // إخفاء الزر عند توفر المساحة
+            } else {
+                menuToggle.style.display = 'block'; // إظهار الزر عند الحاجة
+            }
+        }
+        
+        // عند تحميل الصفحة أو تغيير حجم الشاشة
+        window.addEventListener('resize', checkMenuVisibility);
+        window.addEventListener('load', checkMenuVisibility);
+        
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('show');
+        });
+
+
+
+    </script>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+
+        /*const menuToggle = document.querySelector('.menu-toggle');
+        const navUl = document.querySelector('nav ul');
+        
+        function checkMenuVisibility() {
+            if (window.innerWidth > 768) {
+                navUl.classList.remove('show');
+                menuToggle.style.display = 'none'; // إخفاء الزر عند توفر المساحة
+            } else {
+                menuToggle.style.display = 'block'; // إظهار الزر عند الحاجة
+            }
+        }
+        
+        // عند تحميل الصفحة أو تغيير حجم الشاشة
+        window.addEventListener('resize', checkMenuVisibility);
+        window.addEventListener('load', checkMenuVisibility);
+        
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('show');
+        });*/
+
+
+
+
+
+
+
+
+
+
+
+
+        // السلايدر الرئيسي
+        const mainSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // سلايدر التقييمات
+        const reviewsSwiper = new Swiper('.reviews-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        // القائمة المتنقلة
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navUl = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+// إرسال النموذج
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            /*alert('تم استلام رسالتك، سنرد عليك خلال 24 ساعة');
+            this.reset();*/
+
+
+            var formData = new FormData(this);
+        
+            var url = "https://script.google.com/macros/s/AKfycbwMEvuQUbM7WZHr83y7XJpSR9bKtweBmp_zH4rznNbli87byNv6x9NUyB_tmfZExLN7/exec"; // ضع رابط السكريبت هنا
+    
+            fetch(url, {         
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            alert('تم استلام طلبك بنجاح، سنتواصل في أقرب وقت');
+            this.reset();
+
+
+
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>شركة تك تك - حلول تقنية متكاملة</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* الأساسيات */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.8;
+            color: #333;
+            position: relative;
+        }
+
+        /* الهيدر والقائمة */
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            transition: transform 0.3s ease;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* السلايدر الرئيسي */
+        .swiper-container {
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            margin-top: 60px;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            position: relative;
+            text-align: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 0 15px;
+        }
+
+        .slide-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* الأقسام الرئيسية */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 2.2rem;
+            color: #1a1a1a;
+        }
+
+        /* الخدمات */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* معرض الأعمال */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+.portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        /* التقييمات */
+        .reviews-swiper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 1rem;
+        }
+
+        /* نموذج الاتصال */
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+
+        .contact-form button:hover {
+            opacity: 0.9;
+        }
+
+        /* نموذج الإنشاء */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .creation-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+            display: none;
+        }
+
+        /* التجاوبية */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                flex-direction: column;
+                background: #1a1a1a;
+                width: 100%;
+                padding: 2rem;
+                text-align: center;
+                transition: right 0.3s ease;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .swiper-container {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">تك تك</a>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#portfolio">معرض الأعمال</a></li>
+                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+
+ باقي الأقسام بنفس الهيكل السابق مع تصحيح مسارات الصور -->
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // تهيئة السلايدر الرئيسي
+        const mainSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: { 
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            preventInteractionOnTransition: true,
+            simulateTouch: false,
+            allowTouchMove: false
+        });
+
+        // تهيئة سلايدر التقييمات
+        const reviewsSwiper = new Swiper('.reviews-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2
+                }
+            }
+        });
+
+        // التحكم في القائمة المتنقلة
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav ul').classList.toggle('active');
+            document.body.style.overflow = document.querySelector('nav ul').classList.contains('active') 
+                ? 'hidden' 
+                : 'auto';
+        });
+
+        // إغلاق القائمة عند النقر على الروابط
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('nav ul').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // التحكم في نموذج الإنشاء
+        const formToggle = (action) => {
+            document.getElementById('overlay').style.display = action;
+            document.getElementById('creationForm').style.display = action;
+        }
+
+        document.getElementById('createBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            formToggle('block');
+        });
+
+        document.getElementById('overlay').addEventListener('click', () => {
+            formToggle('none');
+        });
+
+        // إرسال النموذج
+        document.getElementById('serviceForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('لقد استلمنا رسالتك وسنتصل بك في أقرب وقت');
+            e.target.reset();
+            formToggle('none');
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>شركة تك تك - حلول تقنية متكاملة</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            margin-top: 60px;
+        }
+
+        .swiper-slide {
+            position: relative;
+            text-align: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 0 15px;
+        }
+
+        .slide-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio {
+            padding: 6rem 2rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+.portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .reviews {
+            padding: 6rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 1rem;
+        }
+
+        .contact {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .create-site-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .create-site-btn:hover {
+            transform: scale(1.05);
+            background: #45a049;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+        }
+
+        .creation-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            width: 90%;
+            
+            max-width: 400px; /* تصغير العرض الأقصى */
+            max-height: 80vh; /* تحديد ارتفاع نسبي */
+            overflow-y: auto; /* إضافة تمرير عند الحاجة */
+        }
+
+        .creation-form.active,
+        .overlay.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1a1a;
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+.create-site-btn {
+                bottom: 20px;
+                left: 20px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+
+
+        .form-footer {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 1rem 0;
+            margin-top: 1rem;
+            border-top: 2px solid #f5f5f5;
+        }
+        
+        .form-footer button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">تك تك</a>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#portfolio">معرض الأعمال</a></li>
+                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="image/jug.jpg" alt="تطوير مواقع">
+                <div class="slide-content">
+                    <h1>حلول برمجية مبتكرة</h1>
+                    <p>نحو مستقبل رقمي أكثر تطوراً</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="image/op.jpg" alt="برمجة">
+                <div class="slide-content">
+                    <h1>تطوير برامج مخصصة</h1>
+                    <p>حلول ذكية لمشاكل الأعمال</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <section class="services" id="services">
+        <h2>خدماتنا</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>تطوير المواقع</h3>
+                <p>تصميم وتطوير مواقع احترافية بتقنيات حديثة</p>
+            </div>
+            <div class="service-card">
+                <h3>برامج سطح المكتب</h3>
+                <p>حلول برمجية لأنظمة التشغيل المختلفة</p>
+            </div>
+            <div class="service-card">
+                <h3>التطبيقات الذكية</h3>
+                <p>تطوير تطبيقات iOS و Android</p>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="create-site-btn" id="createBtn">
+        أنشئ موقعك الآن
+    </a>
+
+    <section class="portfolio" id="portfolio">
+        <h2>معرض أعمالنا</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="image/shopping.jpg" alt="متجر إلكتروني">
+            </div>
+            <div class="portfolio-item">
+                <img src="https://source.unsplash.com/random/600x400/?dashboard" alt="لوحة تحكم">
+            </div>
+            <div class="portfolio-item">
+                <img src="image/iom.jpg" alt="تطبيق جوال">
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <h2>آراء عملائنا</h2>
+        <div class="swiper reviews-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="review-card">
+                        <p>"أفضل شركة تعاملت معها، التنفيذ باحترافية عالية"</p>
+                        <h4>أحمد محمد</h4>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="review-card">
+                        <p>"خدمة عملاء ممتازة ودعم فني على مدار الساعة"</p>
+                        <h4>فاطمة علي</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>تواصل معنا</h2>
+                <p>+966 555 123 456</p>
+                <p>info@tecktech.com</p>
+<p>الرياض، المملكة العربية السعودية</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="اسمك الكريم" required>
+                <input type="email" placeholder="البريد الإلكتروني" required>
+                <textarea placeholder="رسالتك..." required></textarea>
+                <button type="submit">إرسال الرسالة</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="creation-form" id="creationForm">
+        <h2>طلب خدمة جديدة</h2>
+        <form id="serviceForm">
+            <div class="form-group">
+                <label>البريد الإلكتروني</label>
+                <input type="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label>رقم الهاتف</label>
+                <input type="tel" required>
+            </div>
+
+            <div class="form-group">
+                <label>نوع الخدمة</label>
+                <select required>
+                    <option value="">اختر نوع الخدمة</option>
+                    <option>موقع إلكتروني</option>
+                    <option>برنامج سطح مكتب</option>
+                    <option>أخرى</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>الوصف</label>
+                <textarea rows="4" required></textarea>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="create-site-btn">إرسال الطلب</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        const mainSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: { delay: 5000 },
+            pagination: { el: '.swiper-pagination' }
+        });
+
+        const reviewsSwiper = new Swiper('.reviews-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: { el: '.swiper-pagination' },
+            breakpoints: { 768: { slidesPerView: 2 } }
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('nav ul').classList.toggle('active');
+            document.body.style.overflow = document.querySelector('nav ul').classList.contains('active') 
+                ? 'hidden' 
+                : 'auto';
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Creation Form Handling
+        document.getElementById('createBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('creationForm').classList.add('active');
+        });
+
+        document.getElementById('overlay').addEventListener('click', () => {
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('creationForm').classList.remove('active');
+        });
+
+        document.getElementById('serviceForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('لقد استلمنا رسالتك وسنتصل بك في أقرب وقت');
+            e.target.reset();
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('creationForm').classList.remove('active');
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة تك تك - حلول تقنية متكاملة</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* الهيدر */
+        header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+        /* السلايدر الرئيسي */
+        .swiper-container {
+            width: 100%;
+            height: 100vh;
+            margin-top: 60px;
+        }
+
+        .swiper-slide {
+            position: relative;
+            text-align: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* الخدمات */
+        .services {
+            padding: 6rem 2rem;
+            background: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+        }
+
+        /* معرض الأعمال */
+        .portfolio {
+            padding: 6rem 2rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+/* التقييمات */
+        .reviews {
+            padding: 6rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .reviews-swiper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            margin: 1rem;
+        }
+
+        .rating {
+            color: #ffd700;
+            margin: 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .client-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-left: 15px;
+            object-fit: cover;
+        }
+
+        /* نموذج الاتصال */
+        .contact {
+            padding: 6rem 2rem;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            padding-right: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #4CAF50;
+            border-radius: 30px;
+            background: transparent;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #45a049;
+            box-shadow: 0 0 15px rgba(76,175,80,0.3);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .contact-form button:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* زر الواتساب */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* التكيف مع الجوال */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: white;
+                font-size: 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .whatsapp-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+        }
+h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.4rem; text-align: center; }
+        h3 { font-size: 1.8rem; }
+        p { font-size: 1.1rem; color: #666; }
+
+
+
+
+
+
+
+
+
+        /* زر إنشاء الموقع */
+        .create-site-btn {
+            position: fixed;
+            bottom: 120px;
+            left: 30px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .create-site-btn:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* نموذج الإنشاء */
+        .creation-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .creation-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 5px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">تك تك</a>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#portfolio">معرض الأعمال</a></li>
+                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    السلايدر الرئيسي -->
+    <!-- <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://source.unsplash.com/random/1920x1080/?coding" alt="تطوير مواقع">
+                <div class="slide-content">
+                    <h1>حلول برمجية مبتكرة</h1>
+                    <p>نحو مستقبل رقمي أكثر تطوراً</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://source.unsplash.com/random/1920x1080/?programming" alt="برمجة">
+                <div class="slide-content">
+                    <h1>تطوير برامج مخصصة</h1>
+                    <p>حلول ذكية لمشاكل الأعمال</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    الخدمات -->
+    <!-- <section class="services" id="services">
+        <h2>خدماتنا</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>تطوير المواقع</h3>
+                <p>تصميم وتطوير مواقع احترافية بتقنيات حديثة</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-desktop"></i>
+                <h3>برامج سطح المكتب</h3>
+                <p>حلول برمجية لأنظمة التشغيل المختلفة</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>التطبيقات الذكية</h3>
+                <p>تطوير تطبيقات iOS و Android</p>
+            </div>
+        </div>
+    </section>
+
+
+    <a href="#creation-form" class="create-site-btn">
+        <i class="fas fa-rocket"></i>
+        أنشئ موقعك الآن
+    </a> -->
+
+    <!-- معرض الأعمال -->
+    <!-- <section class="portfolio" id="portfolio">
+        <h2>معرض أعمالنا</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://source.unsplash.com/random/600x400/?ecommerce" alt="متجر إلكتروني">
+            </div>
+            <div class="portfolio-item">
+                <img src="https://source.unsplash.com/random/600x400/?dashboard" alt="لوحة تحكم">
+            </div>
+            <div class="portfolio-item">
+                <img src="https://source.unsplash.com/random/600x400/?mobile-app" alt="تطبيق جوال">
+            </div>
+        </div>
+    </section> -->
+
+    <!-- التقييمات -->
+    <!-- <section class="reviews" id="reviews">
+        <h2>آراء عملائنا</h2>
+        <div class="swiper reviews-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="review-card">
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p>"أفضل شركة تعاملت معها، التنفيذ باحترافية عالية والالتزام بالمواعيد"</p>
+                        <div class="client-info">
+                            <img src="https://source.unsplash.com/random/100x100/?man" class="client-photo" alt="عميل">
+                            <div>
+                                <h4>أحمد محمد</h4>
+                                <p>مدير شركة التقنية</p>
+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="review-card">
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p>"خدمة عملاء ممتازة ودعم فني على مدار الساعة"</p>
+                        <div class="client-info">
+                            <img src="https://source.unsplash.com/random/100x100/?woman" class="client-photo" alt="عميلة">
+                            <div>
+                                <h4>فاطمة علي</h4>
+                                <p>صاحبة متجر إلكتروني</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section> -->
+
+    <!-- اتصل بنا -->
+    <!-- <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>تواصل معنا</h2>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+966 555 123 456</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@tecktech.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>الرياض، المملكة العربية السعودية</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="اسمك الكريم" required>
+                <input type="email" placeholder="البريد الإلكتروني" required>
+                <input type="tel" placeholder="رقم الجوال">
+                <textarea placeholder="رسالتك..." required></textarea>
+                <button type="submit">إرسال الرسالة</button>
+            </form>
+        </div>
+    </section> -->
+
+    <!-- زر الواتساب -->
+    <!-- <a href="https://wa.me/966555123456" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a> -->
+
+<!-- ___________________________ -->
+<!-- نموذج الإنشاء -->
+<!-- <div class="overlay" id="overlay"></div>
+<div class="creation-form" id="creation-form">
+    <h2>طلب خدمة جديدة</h2>
+    <form id="serviceForm">
+        <div class="form-group">
+            <label>البريد الإلكتروني</label>
+            <input type="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label>رقم الهاتف</label>
+            <input type="tel" required>
+        </div>
+
+        <div class="form-group">
+            <label>نوع الخدمة</label>
+            <select required>
+                <option value="">اختر نوع الخدمة</option>
+                <option>موقع إلكتروني</option>
+                <option>برنامج سطح مكتب</option>
+                <option>أخرى</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>الوصف</label>
+            <textarea rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="contact-form-btn">إرسال الطلب</button>
+    </form>
+</div>
+
+<script> -->
+    <!-- // فتح وإغلاق النموذج
+    document.querySelector('.create-site-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('overlay').classList.add('active');
+        document.getElementById('creation-form').classList.add('active');
+    });
+
+    document.getElementById('overlay').addEventListener('click', function() {
+        this.classList.remove('active');
+        document.getElementById('creation-form').classList.remove('active');
+    });
+// إرسال النموذج
+    document.getElementById('serviceForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('لقد استلمنا رسالتك وسنتصل بك في أقرب وقت');
+        this.reset();
+        document.getElementById('overlay').classList.remove('active');
+        document.getElementById('creation-form').classList.remove('active');
+    });
+
+    // التمرير السلس للنموذج
+    document.querySelectorAll('a[href="#creation-form"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }); -->
+<!-- </script> -->
+<!-- ___________________________ -->
+
+
+<!-- 
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // السلايدر الرئيسي
+        const mainSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        // سلايدر التقييمات
+        const reviewsSwiper = new Swiper('.reviews-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+        // القائمة المتنقلة
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navUl = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navUl.style.display = navUl.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        }); -->
+
+        <!-- // إرسال النموذج
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('تم استلام رسالتك، سنرد عليك خلال 24 ساعة');
+            this.reset();
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</body>
+</html>  -->
